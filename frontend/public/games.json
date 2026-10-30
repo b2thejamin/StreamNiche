@@ -1,0 +1,905 @@
+{
+  "updated": "2026-10-30T17:20:04.330791",
+  "games": [
+    {
+      "id": "21779",
+      "name": "League of Legends",
+      "streamer_count": 98,
+      "total_viewers": 625285,
+      "ratio": 6380.46,
+      "genre": "Action",
+      "score": 100
+    },
+    {
+      "id": "509658",
+      "name": "Just Chatting",
+      "streamer_count": 96,
+      "total_viewers": 274280,
+      "ratio": 2857.08,
+      "genre": "Action",
+      "score": 100
+    },
+    {
+      "id": "516575",
+      "name": "VALORANT",
+      "streamer_count": 92,
+      "total_viewers": 167250,
+      "ratio": 1817.93,
+      "genre": "Action",
+      "score": 100
+    },
+    {
+      "id": "32982",
+      "name": "Grand Theft Auto V",
+      "streamer_count": 100,
+      "total_viewers": 108436,
+      "ratio": 1084.36,
+      "genre": "Action",
+      "score": 100
+    },
+    {
+      "id": "1422023940",
+      "name": "QSMP",
+      "streamer_count": 17,
+      "total_viewers": 22602,
+      "ratio": 1329.53,
+      "genre": "Other",
+      "score": 100
+    },
+    {
+      "id": "189654361",
+      "name": "Tom the Postgirl",
+      "streamer_count": 4,
+      "total_viewers": 20579,
+      "ratio": 5144.75,
+      "genre": "Other",
+      "score": 100
+    },
+    {
+      "id": "258824392",
+      "name": "Flipping is Hard",
+      "streamer_count": 8,
+      "total_viewers": 11816,
+      "ratio": 1477.0,
+      "genre": "Other",
+      "score": 100
+    },
+    {
+      "id": "1131336879",
+      "name": "Black Russia",
+      "streamer_count": 6,
+      "total_viewers": 6883,
+      "ratio": 1147.17,
+      "genre": "Other",
+      "score": 100
+    },
+    {
+      "id": "458738",
+      "name": "Desert Bus",
+      "streamer_count": 1,
+      "total_viewers": 4900,
+      "ratio": 4900.0,
+      "genre": "Simulation",
+      "score": 100
+    },
+    {
+      "id": "976324957",
+      "name": "Fears to Fathom: Carson House",
+      "streamer_count": 2,
+      "total_viewers": 4469,
+      "ratio": 2234.5,
+      "genre": "Other",
+      "score": 100
+    },
+    {
+      "id": "461221",
+      "name": "MARVEL Contest of Champions",
+      "streamer_count": 23,
+      "total_viewers": 21075,
+      "ratio": 916.3,
+      "genre": "Action",
+      "score": 92
+    },
+    {
+      "id": "515025",
+      "name": "Overwatch",
+      "streamer_count": 93,
+      "total_viewers": 70201,
+      "ratio": 754.85,
+      "genre": "Action",
+      "score": 75
+    },
+    {
+      "id": "1046135592",
+      "name": "Playrooms",
+      "streamer_count": 6,
+      "total_viewers": 4304,
+      "ratio": 717.33,
+      "genre": "Other",
+      "score": 72
+    },
+    {
+      "id": "27471",
+      "name": "Minecraft",
+      "streamer_count": 96,
+      "total_viewers": 63199,
+      "ratio": 658.32,
+      "genre": "Action",
+      "score": 66
+    },
+    {
+      "id": "32399",
+      "name": "Counter-Strike",
+      "streamer_count": 100,
+      "total_viewers": 64913,
+      "ratio": 649.13,
+      "genre": "Action",
+      "score": 65
+    },
+    {
+      "id": "306019403",
+      "name": "Phantom Blade Zero",
+      "streamer_count": 100,
+      "total_viewers": 59984,
+      "ratio": 599.84,
+      "genre": "Action",
+      "score": 60
+    },
+    {
+      "id": "29595",
+      "name": "Dota 2",
+      "streamer_count": 95,
+      "total_viewers": 52093,
+      "ratio": 548.35,
+      "genre": "Action",
+      "score": 55
+    },
+    {
+      "id": "123184772",
+      "name": "EA Sports FC 27",
+      "streamer_count": 100,
+      "total_viewers": 50831,
+      "ratio": 508.31,
+      "genre": "Other",
+      "score": 51
+    },
+    {
+      "id": "511224",
+      "name": "Apex Legends",
+      "streamer_count": 100,
+      "total_viewers": 50034,
+      "ratio": 500.34,
+      "genre": "Action",
+      "score": 50
+    },
+    {
+      "id": "491168",
+      "name": "Clash Royale",
+      "streamer_count": 63,
+      "total_viewers": 31227,
+      "ratio": 495.67,
+      "genre": "Action",
+      "score": 50
+    },
+    {
+      "id": "509663",
+      "name": "Special Events",
+      "streamer_count": 99,
+      "total_viewers": 45766,
+      "ratio": 462.28,
+      "genre": "Other",
+      "score": 46
+    },
+    {
+      "id": "18122",
+      "name": "World of Warcraft",
+      "streamer_count": 99,
+      "total_viewers": 41007,
+      "ratio": 414.21,
+      "genre": "RPG",
+      "score": 41
+    },
+    {
+      "id": "1478650472",
+      "name": "Call of Duty: Modern Warfare 4",
+      "streamer_count": 100,
+      "total_viewers": 39080,
+      "ratio": 390.8,
+      "genre": "Shooter",
+      "score": 39
+    },
+    {
+      "id": "2132205352",
+      "name": "Deadlock",
+      "streamer_count": 97,
+      "total_viewers": 36800,
+      "ratio": 379.38,
+      "genre": "Strategy",
+      "score": 38
+    },
+    {
+      "id": "771448419",
+      "name": "AION 2",
+      "streamer_count": 100,
+      "total_viewers": 37109,
+      "ratio": 371.09,
+      "genre": "Other",
+      "score": 37
+    },
+    {
+      "id": "1383161249",
+      "name": "Can 'Em All",
+      "streamer_count": 15,
+      "total_viewers": 5370,
+      "ratio": 358.0,
+      "genre": "Other",
+      "score": 36
+    },
+    {
+      "id": "460630",
+      "name": "Rainbow Six Siege",
+      "streamer_count": 100,
+      "total_viewers": 34596,
+      "ratio": 345.96,
+      "genre": "Other",
+      "score": 35
+    },
+    {
+      "id": "498566",
+      "name": "Slots",
+      "streamer_count": 100,
+      "total_viewers": 33084,
+      "ratio": 330.84,
+      "genre": "Other",
+      "score": 33
+    },
+    {
+      "id": "491487",
+      "name": "Dead by Daylight",
+      "streamer_count": 99,
+      "total_viewers": 31282,
+      "ratio": 315.98,
+      "genre": "Action",
+      "score": 32
+    },
+    {
+      "id": "509672",
+      "name": "IRL",
+      "streamer_count": 100,
+      "total_viewers": 30947,
+      "ratio": 309.47,
+      "genre": "Other",
+      "score": 31
+    },
+    {
+      "id": "33214",
+      "name": "Fortnite",
+      "streamer_count": 100,
+      "total_viewers": 30381,
+      "ratio": 303.81,
+      "genre": "Other",
+      "score": 30
+    },
+    {
+      "id": "29452",
+      "name": "Virtual Casino",
+      "streamer_count": 27,
+      "total_viewers": 8032,
+      "ratio": 297.48,
+      "genre": "Simulation",
+      "score": 30
+    },
+    {
+      "id": "27546",
+      "name": "World of Tanks",
+      "streamer_count": 100,
+      "total_viewers": 29211,
+      "ratio": 292.11,
+      "genre": "Action",
+      "score": 29
+    },
+    {
+      "id": "1753787976",
+      "name": "ROB RUN",
+      "streamer_count": 21,
+      "total_viewers": 5200,
+      "ratio": 247.62,
+      "genre": "Other",
+      "score": 25
+    },
+    {
+      "id": "515186",
+      "name": "Crimson Desert",
+      "streamer_count": 97,
+      "total_viewers": 21755,
+      "ratio": 224.28,
+      "genre": "Action",
+      "score": 22
+    },
+    {
+      "id": "1898040946",
+      "name": "How to Fish",
+      "streamer_count": 28,
+      "total_viewers": 6092,
+      "ratio": 217.57,
+      "genre": "Other",
+      "score": 22
+    },
+    {
+      "id": "500188",
+      "name": "Hunt: Showdown 1896",
+      "streamer_count": 100,
+      "total_viewers": 19487,
+      "ratio": 194.87,
+      "genre": "Other",
+      "score": 19
+    },
+    {
+      "id": "513143",
+      "name": "Teamfight Tactics",
+      "streamer_count": 100,
+      "total_viewers": 19387,
+      "ratio": 193.87,
+      "genre": "Strategy",
+      "score": 19
+    },
+    {
+      "id": "1669431183",
+      "name": "DJs",
+      "streamer_count": 100,
+      "total_viewers": 18463,
+      "ratio": 184.63,
+      "genre": "Other",
+      "score": 18
+    },
+    {
+      "id": "464339927",
+      "name": "ARC Raiders",
+      "streamer_count": 99,
+      "total_viewers": 16647,
+      "ratio": 168.15,
+      "genre": "Action",
+      "score": 17
+    },
+    {
+      "id": "491931",
+      "name": "Escape from Tarkov",
+      "streamer_count": 98,
+      "total_viewers": 15298,
+      "ratio": 156.1,
+      "genre": "Action",
+      "score": 16
+    },
+    {
+      "id": "19619",
+      "name": "Tibia",
+      "streamer_count": 100,
+      "total_viewers": 13904,
+      "ratio": 139.04,
+      "genre": "RPG",
+      "score": 14
+    },
+    {
+      "id": "30921",
+      "name": "Rocket League",
+      "streamer_count": 96,
+      "total_viewers": 12202,
+      "ratio": 127.1,
+      "genre": "Sports",
+      "score": 13
+    },
+    {
+      "id": "499973",
+      "name": "Always On",
+      "streamer_count": 100,
+      "total_viewers": 12987,
+      "ratio": 129.87,
+      "genre": "Adventure",
+      "score": 13
+    },
+    {
+      "id": "1763263",
+      "name": "nanos world",
+      "streamer_count": 99,
+      "total_viewers": 12812,
+      "ratio": 129.41,
+      "genre": "Other",
+      "score": 13
+    },
+    {
+      "id": "2085980140",
+      "name": "Lethal Company",
+      "streamer_count": 79,
+      "total_viewers": 10601,
+      "ratio": 134.19,
+      "genre": "Action",
+      "score": 13
+    },
+    {
+      "id": "263490",
+      "name": "Rust",
+      "streamer_count": 98,
+      "total_viewers": 10856,
+      "ratio": 110.78,
+      "genre": "Action",
+      "score": 11
+    },
+    {
+      "id": "24241",
+      "name": "FINAL FANTASY XIV ONLINE",
+      "streamer_count": 100,
+      "total_viewers": 10257,
+      "ratio": 102.57,
+      "genre": "Other",
+      "score": 10
+    },
+    {
+      "id": "509659",
+      "name": "ASMR",
+      "streamer_count": 100,
+      "total_viewers": 10182,
+      "ratio": 101.82,
+      "genre": "Simulation",
+      "score": 10
+    },
+    {
+      "id": "401587136",
+      "name": "Arena Breakout: Infinite",
+      "streamer_count": 96,
+      "total_viewers": 9184,
+      "ratio": 95.67,
+      "genre": "Action",
+      "score": 10
+    },
+    {
+      "id": "1264310518",
+      "name": "Marvel Rivals",
+      "streamer_count": 100,
+      "total_viewers": 9389,
+      "ratio": 93.89,
+      "genre": "Action",
+      "score": 9
+    },
+    {
+      "id": "26936",
+      "name": "Music",
+      "streamer_count": 94,
+      "total_viewers": 8100,
+      "ratio": 86.17,
+      "genre": "Other",
+      "score": 9
+    },
+    {
+      "id": "65632",
+      "name": "DayZ",
+      "streamer_count": 100,
+      "total_viewers": 8643,
+      "ratio": 86.43,
+      "genre": "Action",
+      "score": 9
+    },
+    {
+      "id": "687129551",
+      "name": "Trackmania",
+      "streamer_count": 100,
+      "total_viewers": 9283,
+      "ratio": 92.83,
+      "genre": "Racing",
+      "score": 9
+    },
+    {
+      "id": "13389",
+      "name": "Age of Empires II",
+      "streamer_count": 48,
+      "total_viewers": 4188,
+      "ratio": 87.25,
+      "genre": "Other",
+      "score": 9
+    },
+    {
+      "id": "66082",
+      "name": "Games + Demos",
+      "streamer_count": 92,
+      "total_viewers": 6945,
+      "ratio": 75.49,
+      "genre": "Other",
+      "score": 8
+    },
+    {
+      "id": "459931",
+      "name": "Old School RuneScape",
+      "streamer_count": 100,
+      "total_viewers": 7902,
+      "ratio": 79.02,
+      "genre": "Adventure",
+      "score": 8
+    },
+    {
+      "id": "1870528958",
+      "name": "Terrible Lizards",
+      "streamer_count": 100,
+      "total_viewers": 8129,
+      "ratio": 81.29,
+      "genre": "Other",
+      "score": 8
+    },
+    {
+      "id": "386821",
+      "name": "Black Desert",
+      "streamer_count": 100,
+      "total_viewers": 8031,
+      "ratio": 80.31,
+      "genre": "Other",
+      "score": 8
+    },
+    {
+      "id": "516866",
+      "name": "STALZONE",
+      "streamer_count": 61,
+      "total_viewers": 5163,
+      "ratio": 84.64,
+      "genre": "Other",
+      "score": 8
+    },
+    {
+      "id": "394568",
+      "name": "RimWorld",
+      "streamer_count": 64,
+      "total_viewers": 4840,
+      "ratio": 75.62,
+      "genre": "Strategy",
+      "score": 8
+    },
+    {
+      "id": "509660",
+      "name": "Art",
+      "streamer_count": 98,
+      "total_viewers": 6774,
+      "ratio": 69.12,
+      "genre": "Adventure",
+      "score": 7
+    },
+    {
+      "id": "493057",
+      "name": "PUBG: BATTLEGROUNDS",
+      "streamer_count": 100,
+      "total_viewers": 7181,
+      "ratio": 71.81,
+      "genre": "Other",
+      "score": 7
+    },
+    {
+      "id": "27284",
+      "name": "Retro",
+      "streamer_count": 100,
+      "total_viewers": 7304,
+      "ratio": 73.04,
+      "genre": "Action",
+      "score": 7
+    },
+    {
+      "id": "138585",
+      "name": "Hearthstone",
+      "streamer_count": 99,
+      "total_viewers": 6614,
+      "ratio": 66.81,
+      "genre": "Strategy",
+      "score": 7
+    },
+    {
+      "id": "29056",
+      "name": "Knight Online",
+      "streamer_count": 62,
+      "total_viewers": 4206,
+      "ratio": 67.84,
+      "genre": "Action",
+      "score": 7
+    },
+    {
+      "id": "1630982727",
+      "name": "Where Winds Meet",
+      "streamer_count": 56,
+      "total_viewers": 3875,
+      "ratio": 69.2,
+      "genre": "Action",
+      "score": 7
+    },
+    {
+      "id": "518184",
+      "name": "Phasmophobia",
+      "streamer_count": 93,
+      "total_viewers": 5379,
+      "ratio": 57.84,
+      "genre": "Action",
+      "score": 6
+    },
+    {
+      "id": "743893402",
+      "name": "WARDOGS",
+      "streamer_count": 95,
+      "total_viewers": 5937,
+      "ratio": 62.49,
+      "genre": "RPG",
+      "score": 6
+    },
+    {
+      "id": "488190",
+      "name": "Poker",
+      "streamer_count": 99,
+      "total_viewers": 6238,
+      "ratio": 63.01,
+      "genre": "Other",
+      "score": 6
+    },
+    {
+      "id": "73586",
+      "name": "Outlast",
+      "streamer_count": 100,
+      "total_viewers": 6043,
+      "ratio": 60.43,
+      "genre": "Action",
+      "score": 6
+    },
+    {
+      "id": "272263131",
+      "name": "Animals, Aquariums, and Zoos",
+      "streamer_count": 100,
+      "total_viewers": 5716,
+      "ratio": 57.16,
+      "genre": "Other",
+      "score": 6
+    },
+    {
+      "id": "344035090",
+      "name": "Kingdom Come: Deliverance II",
+      "streamer_count": 100,
+      "total_viewers": 5887,
+      "ratio": 58.87,
+      "genre": "Action",
+      "score": 6
+    },
+    {
+      "id": "1000178598",
+      "name": "Football Manager 27",
+      "streamer_count": 100,
+      "total_viewers": 5739,
+      "ratio": 57.39,
+      "genre": "Other",
+      "score": 6
+    },
+    {
+      "id": "499634",
+      "name": "Crypto",
+      "streamer_count": 100,
+      "total_viewers": 5777,
+      "ratio": 57.77,
+      "genre": "Action",
+      "score": 6
+    },
+    {
+      "id": "71375",
+      "name": "Star Citizen",
+      "streamer_count": 100,
+      "total_viewers": 5651,
+      "ratio": 56.51,
+      "genre": "Action",
+      "score": 6
+    },
+    {
+      "id": "499003",
+      "name": "VRChat",
+      "streamer_count": 96,
+      "total_viewers": 5374,
+      "ratio": 55.98,
+      "genre": "Adventure",
+      "score": 6
+    },
+    {
+      "id": "518203",
+      "name": "Sports",
+      "streamer_count": 100,
+      "total_viewers": 5506,
+      "ratio": 55.06,
+      "genre": "Sports",
+      "score": 6
+    },
+    {
+      "id": "1934479857",
+      "name": "Queen's Domain",
+      "streamer_count": 86,
+      "total_viewers": 4929,
+      "ratio": 57.31,
+      "genre": "Other",
+      "score": 6
+    },
+    {
+      "id": "32959",
+      "name": "Heroes of the Storm",
+      "streamer_count": 73,
+      "total_viewers": 4581,
+      "ratio": 62.75,
+      "genre": "Action",
+      "score": 6
+    },
+    {
+      "id": "1294658629",
+      "name": "R.E.P.O.",
+      "streamer_count": 96,
+      "total_viewers": 5067,
+      "ratio": 52.78,
+      "genre": "Action",
+      "score": 5
+    },
+    {
+      "id": "23020",
+      "name": "ROBLOX",
+      "streamer_count": 93,
+      "total_viewers": 4454,
+      "ratio": 47.89,
+      "genre": "Action",
+      "score": 5
+    },
+    {
+      "id": "512710",
+      "name": "Call of Duty: Warzone",
+      "streamer_count": 100,
+      "total_viewers": 4661,
+      "ratio": 46.61,
+      "genre": "Shooter",
+      "score": 5
+    },
+    {
+      "id": "737987407",
+      "name": "Enshrouded",
+      "streamer_count": 96,
+      "total_viewers": 4762,
+      "ratio": 49.6,
+      "genre": "Action",
+      "score": 5
+    },
+    {
+      "id": "65876",
+      "name": "Cyberpunk 2077",
+      "streamer_count": 99,
+      "total_viewers": 4734,
+      "ratio": 47.82,
+      "genre": "Action",
+      "score": 5
+    },
+    {
+      "id": "195574289",
+      "name": "Moon Sweepers",
+      "streamer_count": 100,
+      "total_viewers": 4794,
+      "ratio": 47.94,
+      "genre": "Other",
+      "score": 5
+    },
+    {
+      "id": "2106425216",
+      "name": "Gray Zone Warfare",
+      "streamer_count": 100,
+      "total_viewers": 5121,
+      "ratio": 51.21,
+      "genre": "Action",
+      "score": 5
+    },
+    {
+      "id": "31339",
+      "name": "Project Zomboid",
+      "streamer_count": 96,
+      "total_viewers": 4730,
+      "ratio": 49.27,
+      "genre": "RPG",
+      "score": 5
+    },
+    {
+      "id": "417528",
+      "name": "Albion Online",
+      "streamer_count": 97,
+      "total_viewers": 4626,
+      "ratio": 47.69,
+      "genre": "Action",
+      "score": 5
+    },
+    {
+      "id": "602040818",
+      "name": "NBA 2K27",
+      "streamer_count": 98,
+      "total_viewers": 4212,
+      "ratio": 42.98,
+      "genre": "Other",
+      "score": 4
+    },
+    {
+      "id": "1267582829",
+      "name": "Aniimo",
+      "streamer_count": 100,
+      "total_viewers": 3928,
+      "ratio": 39.28,
+      "genre": "Adventure",
+      "score": 4
+    },
+    {
+      "id": "497057",
+      "name": "Destiny 2",
+      "streamer_count": 100,
+      "total_viewers": 4474,
+      "ratio": 44.74,
+      "genre": "Action",
+      "score": 4
+    },
+    {
+      "id": "1954784138",
+      "name": "Final Fantasy Resonance",
+      "streamer_count": 100,
+      "total_viewers": 4482,
+      "ratio": 44.82,
+      "genre": "RPG",
+      "score": 4
+    },
+    {
+      "id": "66170",
+      "name": "Warframe",
+      "streamer_count": 100,
+      "total_viewers": 3577,
+      "ratio": 35.77,
+      "genre": "Action",
+      "score": 4
+    },
+    {
+      "id": "1441208453",
+      "name": "Once Human",
+      "streamer_count": 98,
+      "total_viewers": 3605,
+      "ratio": 36.79,
+      "genre": "Action",
+      "score": 4
+    },
+    {
+      "id": "19976",
+      "name": "MapleStory",
+      "streamer_count": 96,
+      "total_viewers": 3944,
+      "ratio": 41.08,
+      "genre": "RPG",
+      "score": 4
+    },
+    {
+      "id": "513181",
+      "name": "Genshin Impact",
+      "streamer_count": 100,
+      "total_viewers": 3566,
+      "ratio": 35.66,
+      "genre": "Action",
+      "score": 4
+    },
+    {
+      "id": "902998079",
+      "name": "Halloween: The Game",
+      "streamer_count": 100,
+      "total_viewers": 3675,
+      "ratio": 36.75,
+      "genre": "Other",
+      "score": 4
+    },
+    {
+      "id": "493959",
+      "name": "Red Dead Redemption II",
+      "streamer_count": 99,
+      "total_viewers": 3355,
+      "ratio": 33.89,
+      "genre": "Other",
+      "score": 3
+    },
+    {
+      "id": "508455",
+      "name": "Valheim",
+      "streamer_count": 100,
+      "total_viewers": 3364,
+      "ratio": 33.64,
+      "genre": "Action",
+      "score": 3
+    }
+  ]
+}
