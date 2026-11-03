@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-
+﻿import { useEffect, useState } from "react";
+import "./App.css";
+ 
 function App() {
     const [games, setGames] = useState([]);
     const [search, setSearch] = useState("");
@@ -23,59 +24,68 @@ function App() {
 
     const display = search === "" ? filtered.slice(0, 10) : filtered;
 
+    const scoreColor = (score) => {
+        if (score >= 70) return "#22c55e";
+        if (score >= 50) return "#eab308";
+        return "#ef4444";
+    };
+
     return (
-        <div style={{ padding: 20, fontFamily: "sans-serif" }}>
-            <h1>StreamNiche</h1>
+        <div className="app">
+            <div className="header">
+                <h1 className="logo">StreamNiche</h1>
+                <div className="search-wrap">
+                    <input
+                        className="search"
+                        placeholder="Search games..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </div>
+            </div>
 
-            <input
-                placeholder="Search game..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                style={{ marginBottom: 16, padding: 8, width: 300 }}
-            />
-
-            <select
-                value={genre}
-                onChange={(e) => setGenre(e.target.value)}
-                style={{ marginLeft: 8, padding: 8 }}
-            >
+            <div className="filters">
                 {genres.map((g) => (
-                    <option key={g} value={g}>
-                        {g}
-                    </option>
-                ))}
-            </select>
-
-            <ul style={{ listStyle: "none", padding: 0 }}>
-                {display.map((g) => (
-                    <li
-                        key={g.id}
-                        onClick={() => setSelected(g)}
-                        style={{
-                            padding: 12,
-                            marginBottom: 8,
-                            border: "1px solid #ccc",
-                            cursor: "pointer",
-                            background: selected?.id === g.id ? "#f0f0f0" : "white",
-                        }}
+                    <button
+                        key={g}
+                        className={`filter ${genre === g ? "active" : ""}`}
+                        onClick={() => setGenre(g)}
                     >
-                        <strong>{g.name}</strong> � Score: {g.score} | {g.streamer_count} streamers | {g.total_viewers} viewers
-                    </li>
+                        {g}
+                    </button>
                 ))}
-            </ul>
+            </div>
+
+            <div className="list">
+                {display.map((g) => (
+                    <div
+                        key={g.id}
+                        className={`row ${selected?.id === g.id ? "selected" : ""}`}
+                        onClick={() => setSelected(g)}
+                    >
+                        <div className="name">{g.name}</div>
+                        <div className="score" style={{ color: scoreColor(g.score) }}>
+                            {g.score}
+                        </div>
+                        <div className="meta">
+                            <span>{g.total_viewers?.toLocaleString() || "—"} viewers</span>
+                            <span>{g.streamer_count?.toLocaleString() || "—"} streamers</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
 
             {selected && (
-                <div style={{ marginTop: 20, padding: 16, border: "1px solid #999" }}>
-                    <button
-                        onClick={() => setSelected(null)}
-                        style={{ float: "right", padding: "4px 8px" }}
-                    >
+                <div className="detail">
+                    <button className="close" onClick={() => setSelected(null)}>
                         Close
                     </button>
                     <h2>{selected.name}</h2>
-                    <p>Score: {selected.score}</p>
+                    <p>
+                        Score: <span style={{ color: scoreColor(selected.score) }}>{selected.score}</span>
+                    </p>
                     <p>Streamers: {selected.streamer_count}</p>
-                    <p>Viewers: {selected.total_viewers}</p>
+                    <p>Viewers: {selected.total_viewers?.toLocaleString()}</p>
                     <p>Ratio: {selected.ratio}</p>
                     <p>Genre: {selected.genre}</p>
                 </div>
