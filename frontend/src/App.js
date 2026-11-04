@@ -1,6 +1,7 @@
 ﻿import { useEffect, useState } from "react";
 import "./App.css";
- 
+import Detail from "./Detail";
+
 function App() {
     const [games, setGames] = useState([]);
     const [search, setSearch] = useState("");
@@ -29,6 +30,14 @@ function App() {
         if (score >= 50) return "#eab308";
         return "#ef4444";
     };
+
+    if (selected) {
+        return (
+            <div className="app">
+                <Detail game={selected} onBack={() => setSelected(null)} />
+            </div>
+        );
+    }
 
     return (
         <div className="app">
@@ -60,7 +69,7 @@ function App() {
                 {display.map((g) => (
                     <div
                         key={g.id}
-                        className={`row ${selected?.id === g.id ? "selected" : ""}`}
+                        className="row"
                         onClick={() => setSelected(g)}
                     >
                         <div className="name">{g.name}</div>
@@ -74,22 +83,6 @@ function App() {
                     </div>
                 ))}
             </div>
-
-            {selected && (
-                <div className="detail">
-                    <button className="close" onClick={() => setSelected(null)}>
-                        Close
-                    </button>
-                    <h2>{selected.name}</h2>
-                    <p>
-                        Score: <span style={{ color: scoreColor(selected.score) }}>{selected.score}</span>
-                    </p>
-                    <p>Streamers: {selected.streamer_count}</p>
-                    <p>Viewers: {selected.total_viewers?.toLocaleString()}</p>
-                    <p>Ratio: {selected.ratio}</p>
-                    <p>Genre: {selected.genre}</p>
-                </div>
-            )}
         </div>
     );
 }
