@@ -2,9 +2,9 @@ import os
 import requests
 from dotenv import load_dotenv
 from datetime import datetime
+from tqdm import tqdm
 import json
 import pandas as pd
-import ast
 
 load_dotenv()
 CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
@@ -38,32 +38,76 @@ def get_app_token():
     response.raise_for_status()
     return response.json()["access_token"]
 
-def get_top_games(token, first=100):
+def get_top_games(token, max_games=200, page_size=100):
+    """Fetch up to max_games using cursor pagination."""
     url = "https://api.twitch.tv/helix/games/top"
     headers = {
         "Client-ID": CLIENT_ID,
         "Authorization": f"Bearer {token}"
     }
-    params = {"first": first}
-    response = requests.get(url, headers=headers, params=params)
-    response.raise_for_status()
-    return response.json()["data"]
+    all_games = []
+    after = None
+    pbar = tqdm(total=max_games, desc="Fetching games", unit="game")
 
-def get_streams_for_game(token, game_id, first=100):
+    while len(all_games) < max_games:
+        params = {"first": min(page_size, max_games - len(all_games))}
+        if after:
+            params["after"] = after
+
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        data = response.json()
+
+        batch = data.get("data", [])
+        if not batch:
+            break
+
+        all_games.extend(batch)
+        pbar.update(len(batch))
+        after = data.get("pagination", {}).get("cursor")
+        if not after:
+            break
+
+    pbar.close()
+    return all_games[:max_games]
+
+def get_streams_for_game(token, game_id, max_streams=200, page_size=100):
+    """Fetch up to max_streams for a game using cursor pagination."""
     url = "https://api.twitch.tv/helix/streams"
     headers = {
         "Client-ID": CLIENT_ID,
         "Authorization": f"Bearer {token}"
     }
-    params = {"game_id": game_id, "first": first}
-    response = requests.get(url, headers=headers, params=params)
-    response.raise_for_status()
-    return response.json()["data"]
+    all_streams = []
+    after = None
 
-def score_games(token, games):
+    while len(all_streams) < max_streams:
+        params = {
+            "game_id": game_id,
+            "first": min(page_size, max_streams - len(all_streams))
+        }
+        if after:
+            params["after"] = after
+
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        data = response.json()
+
+        batch = data.get("data", [])
+        if not batch:
+            break
+
+        all_streams.extend(batch)
+        after = data.get("pagination", {}).get("cursor")
+        if not after:
+            break
+
+    return all_streams[:max_streams]
+
+def score_games(token, games, max_streams_per_game=200):
     results = []
-    for game in games:
-        streams = get_streams_for_game(token, game["id"])
+    for game in tqdm(games, desc="Scoring games", unit="game"):
+        streams = get_streams_for_game(token, game["id"], max_streams=max_streams_per_game)
         streamer_count = len(streams)
         total_viewers = sum(s.get("viewer_count", 0) for s in streams)
         ratio = total_viewers / streamer_count if streamer_count > 0 else 0
@@ -80,8 +124,8 @@ def score_games(token, games):
 
 if __name__ == "__main__":
     token = get_app_token()
-    games = get_top_games(token, first=100)
-    scored = score_games(token, games)
+    games = get_top_games(token, max_games=300) #Adjust max_games as needed
+    scored = score_games(token, games, max_streams_per_game=5000) #Adjust max_streams_per_game as needed
 
     for g in scored:
         g["score"] = min(100, round(g["ratio"] / 10))
