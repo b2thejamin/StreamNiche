@@ -3,12 +3,18 @@ import requests
 from dotenv import load_dotenv
 from datetime import datetime
 from tqdm import tqdm
+from statistics import median
 import json
 import pandas as pd
+import math
 
 load_dotenv()
 CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
 CLIENT_SECRET = os.getenv("TWITCH_CLIENT_SECRET")
+
+# Streamer counts below this floor get their score scaled down proportionally.
+# So a game with a single lucky high-viewer stream doesn't look like a great niche.
+STREAMER_FLOOR = 12
 
 try:
     genre_df = pd.read_csv("genres.csv", low_memory=False)
@@ -39,7 +45,6 @@ def get_app_token():
     return response.json()["access_token"]
 
 def get_top_games(token, max_games=200, page_size=100):
-    """Fetch up to max_games using cursor pagination."""
     url = "https://api.twitch.tv/helix/games/top"
     headers = {
         "Client-ID": CLIENT_ID,
@@ -72,7 +77,6 @@ def get_top_games(token, max_games=200, page_size=100):
     return all_games[:max_games]
 
 def get_streams_for_game(token, game_id, max_streams=200, page_size=100):
-    """Fetch up to max_streams for a game using cursor pagination."""
     url = "https://api.twitch.tv/helix/streams"
     headers = {
         "Client-ID": CLIENT_ID,
@@ -108,27 +112,45 @@ def score_games(token, games, max_streams_per_game=200):
     results = []
     for game in tqdm(games, desc="Scoring games", unit="game"):
         streams = get_streams_for_game(token, game["id"], max_streams=max_streams_per_game)
+
         streamer_count = len(streams)
-        total_viewers = sum(s.get("viewer_count", 0) for s in streams)
-        ratio = total_viewers / streamer_count if streamer_count > 0 else 0
+        viewer_counts = [s.get("viewer_count", 0) for s in streams]
+        total_viewers = sum(viewer_counts)
+        median_viewers = median(viewer_counts) if viewer_counts else 0
+
         genre = GENRE_LOOKUP.get(game["name"].lower(), "Other")
+
         results.append({
             "id": game["id"],
             "name": game["name"],
             "streamer_count": streamer_count,
             "total_viewers": total_viewers,
-            "ratio": round(ratio, 2),
+            "median_viewers": round(median_viewers, 2),
             "genre": genre
         })
     return results
 
+def compute_score(game):
+    median = max(game["median_viewers"], 0)
+    streamers = game["streamer_count"]
+
+    # Base score from median viewers
+    raw = math.log10(median + 1) * 78
+
+    # Penalize games below the streamer floor
+    if streamers < STREAMER_FLOOR:
+        penalty = streamers / STREAMER_FLOOR
+        raw *= penalty
+
+    return max(0, min(100, round(raw)))
+
 if __name__ == "__main__":
     token = get_app_token()
     games = get_top_games(token, max_games=300) #Adjust max_games as needed
-    scored = score_games(token, games, max_streams_per_game=5000) #Adjust max_streams_per_game as needed
+    scored = score_games(token, games, max_streams_per_game=7000) #Adjust max_streams_per_game as needed
 
     for g in scored:
-        g["score"] = min(100, round(g["ratio"] / 10))
+        g["score"] = compute_score(g)
 
     scored.sort(key=lambda g: g["score"], reverse=True)
 
@@ -139,4 +161,4 @@ if __name__ == "__main__":
 
     print(f"Wrote {len(scored)} games to {cache_path}")
     for g in scored[:10]:
-        print(f"{g['name']}: score {g['score']} (ratio {g['ratio']}, {g['streamer_count']} streamers, {g['total_viewers']} viewers, genre {g['genre']})")
+        print(f"{g['name']}: score {g['score']} (median {g['median_viewers']}, {g['streamer_count']} streamers, {g['total_viewers']} viewers, genre {g['genre']})")
