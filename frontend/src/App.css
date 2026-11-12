@@ -21,10 +21,13 @@ body {
 }
 
 .logo {
-    color: #9146FF;
+    color: #7C22FD;
     font-size: 28px;
     margin: 0;
     white-space: nowrap;
+    height: 40px;
+    width: auto;
+    display: block;
 }
 
 .search-wrap {
@@ -44,7 +47,7 @@ body {
 
     .search:focus {
         outline: none;
-        border-color: #9146FF;
+        border-color: #7C22FD;
     }
 
 .control-input,
@@ -55,11 +58,11 @@ body {
     .control-input:focus,
     .control-select:focus {
         outline: none;
-        border-color: #9146FF;
+        border-color: #7C22FD;
     }
 
     .control-select:hover {
-        border-color: #9146FF;
+        border-color: #7C22FD;
     }
 
 .sort-btn {
@@ -67,8 +70,8 @@ body {
 }
 
     .sort-btn:hover {
-        border-color: #9146FF;
-        color: #9146FF;
+        border-color: #7C22FD;
+        color: #7C22FD;
     }
 
 .filters {
@@ -89,12 +92,12 @@ body {
 }
 
     .filter:hover {
-        border-color: #9146FF;
+        border-color: #7C22FD;
     }
 
     .filter.active {
-        background: #9146FF;
-        border-color: #9146FF;
+        background: #7C22FD;
+        border-color: #7C22FD;
         color: white;
     }
 
@@ -116,11 +119,11 @@ body {
 }
 
     .row:hover {
-        outline: 1px solid #9146FF;
+        outline: 1px solid #7C22FD;
     }
 
     .row.selected {
-        outline: 1px solid #9146FF;
+        outline: 1px solid #7C22FD;
     }
 
 .name {
@@ -151,10 +154,14 @@ body {
 }
 
 .detail-logo {
-    color: #9146FF;
+    color: #7C22FD;
     font-size: 28px;
     margin: 0;
     white-space: nowrap;
+    height: 40px;
+    width: auto;
+    display: block;
+    margin: 0 0 8px;
 }
 
 .detail-header {
@@ -177,8 +184,8 @@ body {
 }
 
     .back:hover {
-        border-color: #9146FF;
-        color: #9146FF;
+        border-color: #7C22FD;
+        color: #7C22FD;
     }
 
 .detail-title {
@@ -226,7 +233,7 @@ body {
 
 .trend-label {
     font-size: 13px;
-    color: #9146FF;
+    color: #7C22FD;
     margin-bottom: 8px;
 }
 

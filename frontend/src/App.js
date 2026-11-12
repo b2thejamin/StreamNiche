@@ -65,7 +65,7 @@ function App() {
     return (
         <div className="app">
             <div className="header">
-                <h1 className="logo">StreamNiche</h1>
+                <img src="/streamniche-logo.png" alt="StreamNiche" className="logo" />
             </div>
 
             <div className="controls" style={{ margin: "16px 0", display: "flex", alignItems: "center", gap: "10px", flexWrap: "nowrap" }}>

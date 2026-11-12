@@ -54,8 +54,8 @@ export default function Detail({ game, onBack }) {
                         y: trendData.map((d) => d.score),
                         type: "scatter",
                         mode: "lines+markers",
-                        line: { color: "#9146FF", width: 2 },
-                        marker: { color: "#9146FF", size: 6 },
+                        line: { color: "#7C22FD", width: 2 },
+                        marker: { color: "#7C22FD", size: 6 },
                         hovertemplate: "%{x}<br>Score: %{y}<extra></extra>",
                     },
                 ]}
@@ -80,7 +80,7 @@ export default function Detail({ game, onBack }) {
                     },
                     hoverlabel: {
                         bgcolor: "#000000",
-                        bordercolor: "#9146FF",
+                        bordercolor: "#7C22FD",
                         font: { color: "#eee" },
                     },
                 }}
@@ -93,7 +93,7 @@ export default function Detail({ game, onBack }) {
 
     return (
         <div className="detail-page">
-            <h1 className="detail-logo">StreamNiche</h1>
+            <img src="/streamniche-logo.png" alt="StreamNiche" className="detail-logo" />
             <div className="detail-header">
                 <button className="back" onClick={onBack}>←</button>
                 <h1 className="detail-title">{game.name}</h1>
