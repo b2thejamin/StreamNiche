@@ -7,6 +7,7 @@ from statistics import median
 import json
 import pandas as pd
 import math
+from flask import Flask, jsonify
 
 load_dotenv()
 CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
@@ -144,6 +145,20 @@ def compute_score(game):
 
     return max(0, min(100, round(raw)))
 
+CACHE_PATH = "cache/games.json"
+
+app = Flask(__name__)
+
+@app.route("/api/games", methods=["GET"])
+def get_games():
+    if not os.path.exists(CACHE_PATH):
+        return jsonify({"error": "Cache not ready"}), 503
+
+    with open(CACHE_PATH, "r") as f:
+        data = json.load(f)
+
+    return jsonify(data)
+
 if __name__ == "__main__":
     token = get_app_token()
     games = get_top_games(token, max_games=300) #Adjust max_games as needed
@@ -154,7 +169,7 @@ if __name__ == "__main__":
 
     scored.sort(key=lambda g: g["score"], reverse=True)
 
-    cache_path = "cache/games.json"
+    cache_path = CACHE_PATH
     os.makedirs("cache", exist_ok=True)
     with open(cache_path, "w") as f:
         json.dump({"updated": datetime.now().isoformat(), "games": scored}, f, indent=2)
