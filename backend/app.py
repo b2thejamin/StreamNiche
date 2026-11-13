@@ -10,6 +10,8 @@ import math
 from flask import Flask, jsonify
 from flask_cors import CORS
 
+# test
+
 load_dotenv()
 CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
 CLIENT_SECRET = os.getenv("TWITCH_CLIENT_SECRET")
