@@ -1,4 +1,5 @@
 import os
+import urllib.request
 import requests
 from dotenv import load_dotenv
 from datetime import datetime
@@ -10,8 +11,6 @@ import math
 from flask import Flask, jsonify
 from flask_cors import CORS
 
-# test
-
 load_dotenv()
 CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
 CLIENT_SECRET = os.getenv("TWITCH_CLIENT_SECRET")
@@ -20,8 +19,26 @@ CLIENT_SECRET = os.getenv("TWITCH_CLIENT_SECRET")
 # So a game with a single lucky high-viewer stream doesn't look like a great niche.
 STREAMER_FLOOR = 12
 
+GENRES_CSV_PATH = "genres.csv"
+GENRES_CSV_URL = os.getenv("GENRES_CSV_URL")
+
 try:
-    genre_df = pd.read_csv("genres.csv", low_memory=False)
+    if GENRES_CSV_URL:
+        print(f"Downloading genres.csv from GENRES_CSV_URL...")
+        urllib.request.urlretrieve(GENRES_CSV_URL, GENRES_CSV_PATH)
+        print(f"Downloaded genres.csv to {GENRES_CSV_PATH}")
+    elif os.path.exists(GENRES_CSV_PATH):
+        print(f"Using local {GENRES_CSV_PATH}")
+    else:
+        raise FileNotFoundError(
+            f"'{GENRES_CSV_PATH}' not found and GENRES_CSV_URL is not set. "
+            f"Either place a '{GENRES_CSV_PATH}' file in the backend directory, "
+            f"or set the GENRES_CSV_URL environment variable to a direct-download URL."
+        )
+
+    genre_df = pd.read_csv(GENRES_CSV_PATH, low_memory=False)
+    print(f"Loaded genres.csv with shape {genre_df.shape}")
+
     GENRE_LOOKUP = {}
     for _, row in genre_df.iterrows():
         game_name = str(row["name"]).lower()
