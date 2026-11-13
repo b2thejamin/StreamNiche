@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Detail from "./Detail";
 
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:5000";
+
 function App() {
     const [games, setGames] = useState([]);
     const [search, setSearch] = useState("");
@@ -11,7 +13,7 @@ function App() {
     const [selected, setSelected] = useState(null);
 
     useEffect(() => {
-        fetch("/api/games")
+        fetch(`${API_BASE}/api/games`)
             .then((res) => res.json())
             .then((data) => setGames(data.games || []))
             .catch(() => setGames([]));

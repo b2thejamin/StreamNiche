@@ -8,6 +8,7 @@ import json
 import pandas as pd
 import math
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 load_dotenv()
 CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
@@ -148,6 +149,7 @@ def compute_score(game):
 CACHE_PATH = "cache/games.json"
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/api/games", methods=["GET"])
 def get_games():
@@ -159,21 +161,28 @@ def get_games():
 
     return jsonify(data)
 
-if __name__ == "__main__":
+def refresh_cache(max_games=300, max_streams_per_game=7000):
     token = get_app_token()
-    games = get_top_games(token, max_games=300) #Adjust max_games as needed
-    scored = score_games(token, games, max_streams_per_game=7000) #Adjust max_streams_per_game as needed
+    games = get_top_games(token, max_games=max_games)
+    scored = score_games(token, games, max_streams_per_game=max_streams_per_game)
 
     for g in scored:
         g["score"] = compute_score(g)
 
     scored.sort(key=lambda g: g["score"], reverse=True)
 
-    cache_path = CACHE_PATH
     os.makedirs("cache", exist_ok=True)
-    with open(cache_path, "w") as f:
+    with open(CACHE_PATH, "w") as f:
         json.dump({"updated": datetime.now().isoformat(), "games": scored}, f, indent=2)
 
-    print(f"Wrote {len(scored)} games to {cache_path}")
+    print(f"Wrote {len(scored)} games to {CACHE_PATH}")
     for g in scored[:10]:
         print(f"{g['name']}: score {g['score']} (median {g['median_viewers']}, {g['streamer_count']} streamers, {g['total_viewers']} viewers, genre {g['genre']})")
+
+    return scored
+
+if __name__ == "__main__":
+    refresh_cache()
+    # app.run() only matters for local dev; gunicorn handles the real server on Railway
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
