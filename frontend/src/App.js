@@ -11,7 +11,7 @@ function App() {
     const [selected, setSelected] = useState(null);
 
     useEffect(() => {
-        fetch("/games.json")
+        fetch("/api/games")
             .then((res) => res.json())
             .then((data) => setGames(data.games || []))
             .catch(() => setGames([]));
