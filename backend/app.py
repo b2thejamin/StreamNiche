@@ -10,7 +10,7 @@ import math
 from flask import Flask, jsonify
 from flask_cors import CORS
 
-#re
+print("APP.PY LOADED", flush=True)
 
 load_dotenv()
 CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
