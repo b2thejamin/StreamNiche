@@ -14,9 +14,17 @@ function App() {
 
     useEffect(() => {
         fetch(`${API_BASE}/api/games`)
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Request failed with status ${res.status}`);
+                }
+                return res.json();
+            })
             .then((data) => setGames(data.games || []))
-            .catch(() => setGames([]));
+            .catch((err) => {
+                console.error("Failed to fetch games from", `${API_BASE}/api/games`, err);
+                setGames([]);
+            });
     }, []);
 
     const genres = ["All", ...new Set(games.map((g) => g.genre).filter(Boolean))].sort((a, b) => {
