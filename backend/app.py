@@ -183,6 +183,14 @@ def refresh_cache(max_games=300, max_streams_per_game=7000):
 
     return scored
 
+# Build cache on startup if it doesn't exist
+if not os.path.exists(CACHE_PATH):
+    print("No cache found, building on startup...")
+    try:
+        refresh_cache()
+    except Exception as e:
+        print("Startup cache refresh failed:", e)
+
 if __name__ == "__main__":
     refresh_cache()
     # app.run() only matters for local dev; gunicorn handles the real server on Railway
