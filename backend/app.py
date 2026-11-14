@@ -10,7 +10,10 @@ import math
 from flask import Flask, jsonify
 from flask_cors import CORS
 
+CACHE_PATH = "cache/games.json"
+
 print("APP.PY LOADED", flush=True)
+print("CACHE_PATH exists:", os.path.exists(CACHE_PATH), flush=True)
 
 load_dotenv()
 CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
@@ -148,10 +151,12 @@ def compute_score(game):
 
     return max(0, min(100, round(raw)))
 
-CACHE_PATH = "cache/games.json"
-
 app = Flask(__name__)
 CORS(app)
+
+@app.route("/", methods=["GET"])
+def health():
+    return jsonify({"status": "ok"}), 200
 
 @app.route("/api/games", methods=["GET"])
 def get_games():
