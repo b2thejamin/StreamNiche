@@ -1,7 +1,9 @@
 import os
 import requests
+import threading
+import time
 from dotenv import load_dotenv
-from datetime import datetime
+from datetime import datetime, timedelta
 from tqdm import tqdm
 from statistics import median
 import json
@@ -195,6 +197,24 @@ if not os.path.exists(CACHE_PATH):
         refresh_cache()
     except Exception as e:
         print("Startup cache refresh failed:", e)
+
+def scheduled_refresh():
+    while True:
+        now = datetime.utcnow()
+        next_run = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        if now >= next_run:
+            next_run += timedelta(days=1)
+        sleep_seconds = (next_run - now).total_seconds()
+        print(f"Next cache refresh in {sleep_seconds / 3600:.1f} hours", flush=True)
+        time.sleep(sleep_seconds)
+        try:
+            print("Running scheduled cache refresh...", flush=True)
+            refresh_cache(max_games=300, max_streams_per_game=7000)
+            print("Cache refresh complete", flush=True)
+        except Exception as e:
+            print(f"Scheduled refresh failed: {e}", flush=True)
+
+threading.Thread(target=scheduled_refresh, daemon=True).start()
 
 if __name__ == "__main__":
     refresh_cache()
