@@ -149,3 +149,6 @@ vite.config.ts.timestamp-*
 .turbo
 /.vs
 backend/cache/
+backend/cache/games.json
+/backend/cache/games.json
+/backend/cache/games.json
