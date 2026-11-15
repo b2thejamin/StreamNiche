@@ -170,6 +170,15 @@ def get_games():
 
     return jsonify(data)
 
+# Remove later
+@app.route("/api/refresh", methods=["POST"])
+def trigger_refresh():
+    try:
+        refresh_cache(max_games=300, max_streams_per_game=7000)
+        return jsonify({"status": "refreshed"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 def refresh_cache(max_games=300, max_streams_per_game=7000):
     token = get_app_token()
     games = get_top_games(token, max_games=max_games)
