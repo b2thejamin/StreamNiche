@@ -30,16 +30,7 @@ export default function Detail({ game, onBack }) {
         }
     };
 
-    // TODO: replace with real historical data from the backend once available.
-    const trendData = game.score_history || [
-        { date: "2026-11-03", score: 61 },
-        { date: "2026-11-04", score: 64 },
-        { date: "2026-11-05", score: 58 },
-        { date: "2026-11-06", score: 70 },
-        { date: "2026-11-07", score: 73 },
-        { date: "2026-11-08", score: 69 },
-        { date: "2026-11-09", score: game.score },
-    ];
+    const trendData = game.score_history || [];
 
     const renderTrendChart = () => {
         if (!trendData || trendData.length === 0) {

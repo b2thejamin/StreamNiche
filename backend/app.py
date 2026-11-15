@@ -180,6 +180,30 @@ def refresh_cache(max_games=300, max_streams_per_game=7000):
 
     scored.sort(key=lambda g: g["score"], reverse=True)
 
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+
+    previous_games_by_id = {}
+    if os.path.exists(CACHE_PATH):
+        try:
+            with open(CACHE_PATH, "r") as f:
+                previous_data = json.load(f)
+            for g in previous_data.get("games", []):
+                previous_games_by_id[g.get("id")] = g
+        except Exception as e:
+            print(f"Could not load previous cache for score history: {e}")
+
+    for g in scored:
+        previous_game = previous_games_by_id.get(g["id"])
+        score_history = list(previous_game.get("score_history", [])) if previous_game else []
+
+        # Remove any existing entry for today so we don't duplicate.
+        score_history = [entry for entry in score_history if entry.get("date") != today]
+
+        score_history.append({"date": today, "score": g["score"]})
+
+        # Keep only the last 7 entries.
+        g["score_history"] = score_history[-7:]
+
     os.makedirs("cache", exist_ok=True)
     with open(CACHE_PATH, "w") as f:
         json.dump({"updated": datetime.now().isoformat(), "games": scored}, f, indent=2)
