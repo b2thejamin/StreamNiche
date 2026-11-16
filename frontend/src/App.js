@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Detail from "./Detail";
 
+// forced deploy
+
 const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:5000";
 
 function App() {
