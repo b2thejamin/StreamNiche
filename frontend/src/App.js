@@ -103,11 +103,10 @@ function App() {
         <div className="app">
             <div className="header">
                 <img src="/streamniche-logo.png" alt="StreamNiche" className="logo" />
-                <div className="refresh-indicator">{getUpdatedLabel()}</div>
             </div>
 
             <p className="tagline">
-                StreamNiche scores games by viewership vs. competition. Higher scores mean better opportunities for new streamers.
+                StreamNiche scores games by viewership vs. competition. Higher scores mean better opportunities for new streamers. <span className="refresh-indicator">{getUpdatedLabel()}</span>
             </p>
 
             <div className="controls">
