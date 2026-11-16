@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Detail from "./Detail";
 
-// forced deploy
-
 const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:5000";
 
 function App() {
@@ -26,7 +24,8 @@ function App() {
             })
             .then((data) => {
                 setGames(data.games || []);
-                setLastUpdated(Date.now());
+                const updatedTime = data.updated ? new Date(data.updated).getTime() : null;
+                setLastUpdated(Number.isNaN(updatedTime) ? null : updatedTime);
             })
             .catch((err) => {
                 console.error("Failed to fetch games from", `${API_BASE}/api/games`, err);
@@ -40,15 +39,18 @@ function App() {
     }, []);
 
     const getUpdatedLabel = () => {
-        if (!lastUpdated) return null;
+        if (!lastUpdated) return "Updating...";
         const diffMs = now - lastUpdated;
         const diffMin = Math.floor(diffMs / 60000);
         if (diffMin < 1) return "Twitch data updated just now";
-        if (diffMin === 1) return "Twitch data updated 1m ago";
-        if (diffMin < 60) return `Twitch data updated ${diffMin}m ago`;
+        if (diffMin === 1) return "Twitch data updated 1 minute ago";
+        if (diffMin < 60) return `Twitch data updated ${diffMin} minutes ago`;
         const diffHr = Math.floor(diffMin / 60);
-        if (diffHr === 1) return "Twitch data updated 1h ago";
-        return `Twitch data updated ${diffHr}h ago`;
+        if (diffHr === 1) return "Twitch data updated 1 hour ago";
+        if (diffHr < 24) return `Twitch data updated ${diffHr} hours ago`;
+        const diffDay = Math.floor(diffHr / 24);
+        if (diffDay === 1) return "Twitch data updated 1 day ago";
+        return `Twitch data updated ${diffDay} days ago`;
     };
 
     const genres = ["All", ...new Set(games.map((g) => g.genre).filter(Boolean))].sort((a, b) => {
@@ -100,9 +102,7 @@ function App() {
         <div className="app">
             <div className="header">
                 <img src="/streamniche-logo.png" alt="StreamNiche" className="logo" />
-                {getUpdatedLabel() && (
-                    <div className="refresh-indicator">{getUpdatedLabel()}</div>
-                )}
+                <div className="refresh-indicator">{getUpdatedLabel()}</div>
             </div>
 
             <p className="tagline">
