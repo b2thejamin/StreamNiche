@@ -152,3 +152,5 @@ backend/cache/
 backend/cache/games.json
 /backend/cache/games.json
 /backend/cache/games.json
+__pycache__/
+**/__pycache__/

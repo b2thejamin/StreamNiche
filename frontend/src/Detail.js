@@ -47,7 +47,7 @@ export default function Detail({ game, onBack }) {
                         mode: "lines+markers",
                         line: { color: "#7C22FD", width: 2 },
                         marker: { color: "#7C22FD", size: 6 },
-                        hovertemplate: "%{x}<br>Score: %{y}<extra></extra>",
+                        hoverinfo: "skip",
                     },
                 ]}
                 layout={{
@@ -56,26 +56,32 @@ export default function Detail({ game, onBack }) {
                     margin: { l: 36, r: 16, t: 10, b: 36 },
                     paper_bgcolor: "#1a1a1a",
                     plot_bgcolor: "#1a1a1a",
-                    font: { color: "#eee", size: 12 },
+                    font: { color: "#ffffff", size: 12 },
+                    dragmode: false,
+                    hovermode: false,
                     xaxis: {
                         gridcolor: "#333",
                         zerolinecolor: "#333",
                         tickfont: { color: "#999" },
                         tickformat: "%b %-d",
+                        fixedrange: true,
                     },
                     yaxis: {
                         gridcolor: "#333",
                         zerolinecolor: "#333",
                         tickfont: { color: "#999" },
                         range: [0, 100],
-                    },
-                    hoverlabel: {
-                        bgcolor: "#000000",
-                        bordercolor: "#7C22FD",
-                        font: { color: "#eee" },
+                        fixedrange: true,
                     },
                 }}
-                config={{ displayModeBar: false, responsive: true }}
+                config={{
+                    displayModeBar: false,
+                    responsive: true,
+                    staticPlot: true,
+                    scrollZoom: false,
+                    doubleClick: false,
+                    showTips: false,
+                }}
                 style={{ width: "100%", height: "100%" }}
                 useResizeHandler
             />

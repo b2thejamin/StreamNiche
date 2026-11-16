@@ -11,6 +11,8 @@ function App() {
     const [sortBy, setSortBy] = useState("score");
     const [sortDir, setSortDir] = useState("desc");
     const [selected, setSelected] = useState(null);
+    const [lastUpdated, setLastUpdated] = useState(null);
+    const [now, setNow] = useState(Date.now());
 
     useEffect(() => {
         fetch(`${API_BASE}/api/games`)
@@ -20,12 +22,32 @@ function App() {
                 }
                 return res.json();
             })
-            .then((data) => setGames(data.games || []))
+            .then((data) => {
+                setGames(data.games || []);
+                setLastUpdated(Date.now());
+            })
             .catch((err) => {
                 console.error("Failed to fetch games from", `${API_BASE}/api/games`, err);
                 setGames([]);
             });
     }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => setNow(Date.now()), 30000);
+        return () => clearInterval(interval);
+    }, []);
+
+    const getUpdatedLabel = () => {
+        if (!lastUpdated) return null;
+        const diffMs = now - lastUpdated;
+        const diffMin = Math.floor(diffMs / 60000);
+        if (diffMin < 1) return "Twitch data updated just now";
+        if (diffMin === 1) return "Twitch data updated 1m ago";
+        if (diffMin < 60) return `Twitch data updated ${diffMin}m ago`;
+        const diffHr = Math.floor(diffMin / 60);
+        if (diffHr === 1) return "Twitch data updated 1h ago";
+        return `Twitch data updated ${diffHr}h ago`;
+    };
 
     const genres = ["All", ...new Set(games.map((g) => g.genre).filter(Boolean))].sort((a, b) => {
         if (a === "All") return -1;
@@ -76,22 +98,29 @@ function App() {
         <div className="app">
             <div className="header">
                 <img src="/streamniche-logo.png" alt="StreamNiche" className="logo" />
+                {getUpdatedLabel() && (
+                    <div className="refresh-indicator">{getUpdatedLabel()}</div>
+                )}
             </div>
 
-            <div className="controls" style={{ margin: "16px 0", display: "flex", alignItems: "center", gap: "10px", flexWrap: "nowrap" }}>
+            <p className="tagline">
+                StreamNiche scores games by viewership vs. competition. Higher scores mean better opportunities for new streamers.
+            </p>
+
+            <div className="controls">
                 <input
                     className="search control-input"
                     placeholder="Search games..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    style={{ padding: "6px 12px", borderRadius: "6px", background: "#1e1e1e", color: "#fff", width: "220px", flex: "0 0 auto" }}
+                    style={{ padding: "6px 12px", borderRadius: "6px", background: "#1e1e1e", color: "#ffffff", width: "220px", flex: "0 0 auto" }}
                 />
 
                 <select
                     className="control-select"
                     value={genre}
                     onChange={(e) => setGenre(e.target.value)}
-                    style={{ padding: "6px 10px", borderRadius: "6px", background: "#1e1e1e", color: "#fff", flexShrink: 0 }}
+                    style={{ padding: "6px 10px", borderRadius: "6px", background: "#1e1e1e", color: "#ffffff", flexShrink: 0 }}
                 >
                     {genres.map((g) => (
                         <option key={g} value={g}>{g}</option>
@@ -102,7 +131,7 @@ function App() {
                     className="control-select"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    style={{ padding: "6px 10px", borderRadius: "6px", background: "#1e1e1e", color: "#fff", flexShrink: 0 }}
+                    style={{ padding: "6px 10px", borderRadius: "6px", background: "#1e1e1e", color: "#ffffff", flexShrink: 0 }}
                 >
                     <option value="score">Score</option>
                     <option value="streamers">Streamers</option>
@@ -116,7 +145,7 @@ function App() {
                         padding: "6px 12px",
                         borderRadius: "6px",
                         background: "#2a2a2a",
-                        color: "#fff",
+                        color: "#ffffff",
                         cursor: "pointer",
                         flexShrink: 0,
                         whiteSpace: "nowrap"
