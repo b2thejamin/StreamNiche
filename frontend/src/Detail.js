@@ -3,6 +3,30 @@ import createPlotlyComponent from "react-plotly.js/factory";
 
 const Plot = createPlotlyComponent(Plotly);
 
+const parseDateUTC = (str) => new Date(`${str}T00:00:00Z`);
+const formatDateUTC = (date) => date.toISOString().slice(0, 10);
+
+const buildSevenDayTrend = (history) => {
+    if (!history || history.length === 0) return [];
+
+    const sorted = [...history].sort(
+        (a, b) => parseDateUTC(a.date) - parseDateUTC(b.date)
+    );
+    const byDate = new Map(sorted.map((d) => [d.date, d.score]));
+    const oldestScore = sorted[0].score;
+    const lastDate = parseDateUTC(sorted[sorted.length - 1].date);
+
+    const result = [];
+    for (let i = 6; i >= 0; i--) {
+        const d = new Date(lastDate);
+        d.setUTCDate(d.getUTCDate() - i);
+        const dateStr = formatDateUTC(d);
+        const score = byDate.has(dateStr) ? byDate.get(dateStr) : oldestScore;
+        result.push({ date: dateStr, score });
+    }
+    return result;
+};
+
 export default function Detail({ game, onBack }) {
     if (!game) return null;
 
@@ -30,7 +54,7 @@ export default function Detail({ game, onBack }) {
         }
     };
 
-    const trendData = game.score_history || [];
+    const trendData = buildSevenDayTrend(game.score_history || []);
 
     const renderTrendChart = () => {
         if (!trendData || trendData.length === 0) {
@@ -64,6 +88,7 @@ export default function Detail({ game, onBack }) {
                         zerolinecolor: "#333",
                         tickfont: { color: "#999" },
                         tickformat: "%b %-d",
+                        type: "date",
                         fixedrange: true,
                     },
                     yaxis: {
