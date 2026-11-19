@@ -118,7 +118,14 @@ export default function Detail({ game, onBack }) {
             <img src="/streamniche-logo.png" alt="StreamNiche" className="detail-logo" />
             <div className="detail-header">
                 <button className="back" onClick={onBack}>←</button>
-                <h1 className="detail-title">{game.name}</h1>
+                <a
+                    className="detail-title-link"
+                    href={`https://www.twitch.tv/directory/category/${encodeURIComponent(game.name)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <h1 className="detail-title">{game.name}</h1>
+                </a>
             </div>
             <div className="detail-score" style={{ color: scoreColor(game.score) }}>
                 {game.score}
