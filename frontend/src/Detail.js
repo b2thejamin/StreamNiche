@@ -6,6 +6,16 @@ const Plot = createPlotlyComponent(Plotly);
 const parseDateUTC = (str) => new Date(`${str}T00:00:00Z`);
 const formatDateUTC = (date) => date.toISOString().slice(0, 10);
 
+const slugifyGameName = (name) => {
+    if (!name) return "";
+    return name
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
+};
+
 const buildSevenDayTrend = (history) => {
     if (!history || history.length === 0) return [];
 
@@ -120,7 +130,7 @@ export default function Detail({ game, onBack }) {
                 <button className="back" onClick={onBack}>←</button>
                 <a
                     className="detail-title-link"
-                    href={`https://www.twitch.tv/directory/category/${encodeURIComponent(game.name)}`}
+                    href={`https://www.twitch.tv/directory/category/${slugifyGameName(game.name)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
