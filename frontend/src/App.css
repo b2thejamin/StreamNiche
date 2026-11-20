@@ -148,10 +148,7 @@ body {
     border-radius: 6px;
     padding: 12px 16px;
     display: grid;
-    grid-template-columns: 1fr 48px;
-    grid-template-areas:
-        "name score"
-        "meta meta";
+    grid-template-columns: 1fr 80px 1fr;
     align-items: center;
     gap: var(--spacing-sm);
     cursor: pointer;
@@ -396,25 +393,21 @@ body {
     }
 
     .row {
-        grid-template-columns: minmax(0, 1fr) auto auto auto;
-        grid-template-areas: none;
+        grid-template-columns: 1fr 48px;
         padding: 10px 12px;
-        gap: 8px;
+        gap: 4px;
     }
 
         .row .name {
-            grid-area: auto;
             font-size: 14px;
         }
 
         .row .score {
-            grid-area: auto;
             font-size: 20px;
         }
 
         .row .meta {
-            grid-area: auto;
-            display: contents;
+            display: none;
         }
 
     .meta {
