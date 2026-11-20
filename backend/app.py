@@ -13,6 +13,8 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 
 CACHE_PATH = "cache/games.json"
+BOX_ART_WIDTH = 285
+BOX_ART_HEIGHT = 380
 
 print("APP.PY LOADED", flush=True)
 print("CACHE_PATH exists:", os.path.exists(CACHE_PATH), flush=True)
@@ -117,8 +119,41 @@ def get_streams_for_game(token, game_id, max_streams=200, page_size=100):
 
     return all_streams[:max_streams]
 
+def get_box_art_urls(token, game_names, batch_size=100):
+    url = "https://api.twitch.tv/helix/games"
+    headers = {
+        "Client-ID": CLIENT_ID,
+        "Authorization": f"Bearer {token}"
+    }
+    box_art_by_name = {}
+
+    unique_names = list({name for name in game_names if name})
+
+    for i in tqdm(range(0, len(unique_names), batch_size), desc="Fetching box art", unit="batch"):
+        batch = unique_names[i:i + batch_size]
+        params = [("name", name) for name in batch]
+
+        try:
+            response = requests.get(url, headers=headers, params=params)
+            response.raise_for_status()
+            data = response.json()
+        except requests.RequestException as e:
+            print(f"Box art lookup failed for batch starting at {i}: {e}")
+            continue
+
+        for entry in data.get("data", []):
+            template = entry.get("box_art_url")
+            if not template:
+                continue
+            final_url = template.replace("{width}", str(BOX_ART_WIDTH)).replace("{height}", str(BOX_ART_HEIGHT))
+            box_art_by_name[entry.get("name", "").lower()] = final_url
+
+    return box_art_by_name
+
 def score_games(token, games, max_streams_per_game=200):
     results = []
+    box_art_by_name = get_box_art_urls(token, [game["name"] for game in games])
+
     for game in tqdm(games, desc="Scoring games", unit="game"):
         streams = get_streams_for_game(token, game["id"], max_streams=max_streams_per_game)
 
@@ -128,6 +163,7 @@ def score_games(token, games, max_streams_per_game=200):
         median_viewers = median(viewer_counts) if viewer_counts else 0
 
         genre = GENRE_LOOKUP.get(game["name"].lower(), "Other")
+        box_art_url = box_art_by_name.get(game["name"].lower())
 
         results.append({
             "id": game["id"],
@@ -135,7 +171,8 @@ def score_games(token, games, max_streams_per_game=200):
             "streamer_count": streamer_count,
             "total_viewers": total_viewers,
             "median_viewers": round(median_viewers, 2),
-            "genre": genre
+            "genre": genre,
+            "box_art_url": box_art_url
         })
     return results
 
@@ -196,12 +233,10 @@ def refresh_cache(max_games=500, max_streams_per_game=7000):
         previous_game = previous_games_by_id.get(g["id"])
         score_history = list(previous_game.get("score_history", [])) if previous_game else []
 
-        # Remove any existing entry for today so we don't duplicate.
         score_history = [entry for entry in score_history if entry.get("date") != today]
 
         score_history.append({"date": today, "score": g["score"]})
 
-        # Keep only the last 7 entries.
         g["score_history"] = score_history[-7:]
 
     os.makedirs("cache", exist_ok=True)

@@ -162,6 +162,27 @@ body {
         border-color: #7C22FD;
     }
 
+.name-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    min-width: 0;
+}
+
+.box-art {
+    height: 48px;
+    width: 36px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    object-fit: cover;
+    background: #1a1a1a;
+}
+
+.box-art-placeholder {
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+}
+
 .name {
     font-weight: 500;
     font-size: 16px;
@@ -400,6 +421,11 @@ body {
 
         .row .name {
             font-size: 14px;
+        }
+
+        .row .box-art {
+            height: 40px;
+            width: 30px;
         }
 
         .row .score {

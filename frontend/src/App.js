@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 import Detail from "./Detail";
 
@@ -54,34 +54,38 @@ function App() {
         return `Twitch data updated ${diffDay} days ago`;
     };
 
-    const genres = ["All", ...new Set(games.map((g) => g.genre).filter(Boolean))].sort((a, b) => {
-        if (a === "All") return -1;
-        if (b === "All") return 1;
-        return a.localeCompare(b);
-    });
+    const genres = useMemo(() => {
+        return ["All", ...new Set(games.map((g) => g.genre).filter(Boolean))].sort((a, b) => {
+            if (a === "All") return -1;
+            if (b === "All") return 1;
+            return a.localeCompare(b);
+        });
+    }, [games]);
 
-    const filtered = games.filter((g) => {
-        const matchesSearch = g.name.toLowerCase().includes(search.toLowerCase());
-        const matchesGenre = genre === "All" || g.genre === genre;
-        return matchesSearch && matchesGenre;
-    });
+    const display = useMemo(() => {
+        const filtered = games.filter((g) => {
+            const matchesSearch = g.name.toLowerCase().includes(search.toLowerCase());
+            const matchesGenre = genre === "All" || g.genre === genre;
+            return matchesSearch && matchesGenre;
+        });
 
-    const sorted = [...filtered].sort((a, b) => {
-        let aVal = 0, bVal = 0;
-        if (sortBy === "streamers") {
-            aVal = a.streamer_count || 0;
-            bVal = b.streamer_count || 0;
-        } else if (sortBy === "viewers") {
-            aVal = a.total_viewers || 0;
-            bVal = b.total_viewers || 0;
-        } else {
-            aVal = a.score || 0;
-            bVal = b.score || 0;
-        }
-        return sortDir === "desc" ? bVal - aVal : aVal - bVal;
-    });
+        const sorted = [...filtered].sort((a, b) => {
+            let aVal = 0, bVal = 0;
+            if (sortBy === "streamers") {
+                aVal = a.streamer_count || 0;
+                bVal = b.streamer_count || 0;
+            } else if (sortBy === "viewers") {
+                aVal = a.total_viewers || 0;
+                bVal = b.total_viewers || 0;
+            } else {
+                aVal = a.score || 0;
+                bVal = b.score || 0;
+            }
+            return sortDir === "desc" ? bVal - aVal : aVal - bVal;
+        });
 
-    const display = sorted.slice(0, 10);
+        return sorted.slice(0, 10);
+    }, [games, search, genre, sortBy, sortDir]);
 
     const scoreColor = (score) => {
         if (score >= 90) return "#22c55e";
@@ -164,7 +168,14 @@ function App() {
                         className="row"
                         onClick={() => setSelected(g)}
                     >
-                        <div className="name">{g.name}</div>
+                        <div className="name-wrap">
+                            {g.box_art_url ? (
+                                <img src={g.box_art_url} alt={`${g.name} box art`} className="box-art" />
+                            ) : (
+                                <div className="box-art box-art-placeholder" aria-hidden="true" />
+                            )}
+                            <div className="name">{g.name}</div>
+                        </div>
                         <div className="score" style={{ color: scoreColor(g.score) }}>
                             {g.score}
                         </div>
