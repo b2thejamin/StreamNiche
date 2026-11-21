@@ -361,6 +361,42 @@ body {
     flex-wrap: nowrap;
 }
 
+.pagination {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+.page-btn {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+    .page-btn:hover:not(:disabled) {
+        border-color: #7C22FD;
+        color: #7C22FD;
+    }
+
+    .page-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+.page-info {
+    color: #999;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
 @media (max-width: 600px) {
     .app:has(.detail-page) {
         max-width: none;

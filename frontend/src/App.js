@@ -3,6 +3,7 @@ import "./App.css";
 import Detail from "./Detail";
 
 const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:5000";
+const PAGE_SIZE = 10;
 
 // redeploy 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     const [selected, setSelected] = useState(null);
     const [lastUpdated, setLastUpdated] = useState(null);
     const [now, setNow] = useState(Date.now());
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         fetch(`${API_BASE}/api/games`)
@@ -39,6 +41,10 @@ function App() {
         return () => clearInterval(interval);
     }, []);
 
+    useEffect(() => {
+        setPage(1);
+    }, [search, genre, sortBy, sortDir]);
+
     const getUpdatedLabel = () => {
         if (!lastUpdated) return "Updating...";
         const diffMs = now - lastUpdated;
@@ -62,14 +68,14 @@ function App() {
         });
     }, [games]);
 
-    const display = useMemo(() => {
+    const sortedFiltered = useMemo(() => {
         const filtered = games.filter((g) => {
             const matchesSearch = g.name.toLowerCase().includes(search.toLowerCase());
             const matchesGenre = genre === "All" || g.genre === genre;
             return matchesSearch && matchesGenre;
         });
 
-        const sorted = [...filtered].sort((a, b) => {
+        return [...filtered].sort((a, b) => {
             let aVal = 0, bVal = 0;
             if (sortBy === "streamers") {
                 aVal = a.streamer_count || 0;
@@ -83,9 +89,15 @@ function App() {
             }
             return sortDir === "desc" ? bVal - aVal : aVal - bVal;
         });
-
-        return sorted.slice(0, 10);
     }, [games, search, genre, sortBy, sortDir]);
+
+    const totalPages = Math.max(1, Math.ceil(sortedFiltered.length / PAGE_SIZE));
+    const currentPage = Math.min(page, totalPages);
+
+    const display = useMemo(() => {
+        const start = (currentPage - 1) * PAGE_SIZE;
+        return sortedFiltered.slice(start, start + PAGE_SIZE);
+    }, [sortedFiltered, currentPage]);
 
     const scoreColor = (score) => {
         if (score >= 90) return "#22c55e";
@@ -186,6 +198,28 @@ function App() {
                     </div>
                 ))}
             </div>
+
+            {totalPages > 1 && (
+                <div className="pagination">
+                    <button
+                        className="page-btn"
+                        onClick={() => setPage((p) => Math.max(1, p - 1))}
+                        disabled={currentPage === 1}
+                    >
+                        ← Previous
+                    </button>
+                    <span className="page-info">
+                        Page {currentPage} of {totalPages}
+                    </span>
+                    <button
+                        className="page-btn"
+                        onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                        disabled={currentPage === totalPages}
+                    >
+                        Next →
+                    </button>
+                </div>
+            )}
         </div>
     );
 }
