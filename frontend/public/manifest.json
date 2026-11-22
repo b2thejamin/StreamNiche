@@ -1,6 +1,7 @@
 {
   "short_name": "StreamNiche",
-  "name": "StreamNiche",
+  "name": "StreamNiche – Find Undervalued Twitch Games for New Streamers",
+  "description": "StreamNiche ranks Twitch games by viewers vs. competition, helping new streamers discover low-competition niches with real audience potential.",
   "icons": [
     {
       "src": "favicon.ico",
