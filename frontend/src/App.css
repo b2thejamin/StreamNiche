@@ -368,7 +368,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-md);
-    margin-top: var(--spacing-sm);
+    margin-top: var(--spacing-md);
 }
 
 .page-btn {
@@ -394,6 +394,20 @@ body {
 .page-info {
     color: #999;
     font-size: 12px;
+    white-space: nowrap;
+}
+
+.penalty-badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 6px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #999;
+    background: rgba(153, 153, 153, 0.12);
+    border: 1px solid rgba(153, 153, 153, 0.25);
+    border-radius: 10px;
+    vertical-align: middle;
     white-space: nowrap;
 }
 
@@ -516,5 +530,16 @@ body {
 
     .trend {
         padding: 10px 12px 8px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
+
+    .penalty-badge {
+        display: block;
+        margin-left: 0;
+        margin-top: 2px;
+        width: fit-content;
     }
 }

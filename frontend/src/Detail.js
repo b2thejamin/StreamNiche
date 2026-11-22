@@ -41,11 +41,16 @@ export default function Detail({ game, onBack }) {
     if (!game) return null;
 
     const scoreColor = (score) => {
-        if (score >= 90) return "#22c55e";
-        if (score >= 70) return "#84cc16";
-        if (score >= 50) return "#eab308";
-        if (score >= 30) return "#f97316";
-        return "#ef4444";
+        if (score >= 90) return "#22c55e"; // bright green
+        if (score >= 80) return "#4ade80"; // green
+        if (score >= 70) return "#a3e635"; // lime / light green
+        if (score >= 60) return "#facc15"; // yellow
+        if (score >= 50) return "#f59e0b"; // amber
+        if (score >= 40) return "#f97316"; // orange
+        if (score >= 30) return "#fb5a3c"; // orange-red
+        if (score >= 20) return "#ef4444"; // red
+        if (score >= 10) return "#b91c1c"; // darker red
+        return "#8a5a5a"; // muted red
     };
 
     const getDescription = (g) => {
@@ -147,7 +152,14 @@ export default function Detail({ game, onBack }) {
                 </div>
                 <div>
                     <div className="stat-num">{game.streamer_count?.toLocaleString() || "—"}</div>
-                    <div className="stat-label">Streamers</div>
+                    <div className="stat-label">
+                        Streamers
+                        {game.streamer_count != null && game.streamer_count < 12 && (
+                            <span className="penalty-badge" title="Fewer than 12 streamers currently receives a score penalty">
+                                Penalized
+                            </span>
+                        )}
+                    </div>
                 </div>
             </div>
             <p className="detail-desc">{getDescription(game)}</p>
