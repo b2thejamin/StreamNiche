@@ -154,11 +154,6 @@ export default function Detail({ game, onBack }) {
                     <div className="stat-num">{game.streamer_count?.toLocaleString() || "—"}</div>
                     <div className="stat-label">
                         Streamers
-                        {game.streamer_count != null && game.streamer_count < 12 && (
-                            <span className="penalty-badge" title="Fewer than 12 streamers currently receives a score penalty">
-                                Penalized
-                            </span>
-                        )}
                     </div>
                 </div>
             </div>

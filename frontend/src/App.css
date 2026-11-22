@@ -397,20 +397,6 @@ body {
     white-space: nowrap;
 }
 
-.penalty-badge {
-    display: inline-block;
-    margin-left: 6px;
-    padding: 1px 6px;
-    font-size: 10px;
-    font-weight: 500;
-    color: #999;
-    background: rgba(153, 153, 153, 0.12);
-    border: 1px solid rgba(153, 153, 153, 0.25);
-    border-radius: 10px;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-
 @media (max-width: 600px) {
     .app:has(.detail-page) {
         max-width: none;
@@ -534,12 +520,5 @@ body {
 
     .stat-label {
         font-size: 12px;
-    }
-
-    .penalty-badge {
-        display: block;
-        margin-left: 0;
-        margin-top: 2px;
-        width: fit-content;
     }
 }
