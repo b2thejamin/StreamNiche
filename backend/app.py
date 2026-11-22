@@ -207,7 +207,7 @@ def get_games():
 
     return jsonify(data)
 
-def refresh_cache(max_games=500, max_streams_per_game=7000):
+def refresh_cache(max_games=500, max_streams_per_game=8000):
     token = get_app_token()
     games = get_top_games(token, max_games=max_games)
     scored = score_games(token, games, max_streams_per_game=max_streams_per_game)
@@ -268,7 +268,7 @@ def scheduled_refresh():
         time.sleep(sleep_seconds)
         try:
             print("Running scheduled cache refresh...", flush=True)
-            refresh_cache(max_games=500, max_streams_per_game=7000)
+            refresh_cache(max_games=500, max_streams_per_game=8000)
             print("Cache refresh complete", flush=True)
         except Exception as e:
             print(f"Scheduled refresh failed: {e}", flush=True)
