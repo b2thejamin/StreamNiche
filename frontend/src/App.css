@@ -397,6 +397,36 @@ body {
     white-space: nowrap;
 }
 
+.promo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 8px 14px;
+    margin: 0 0 var(--spacing-md);
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: rgba(124, 34, 253, 0.06);
+    color: #ccc;
+    text-decoration: none;
+    font-size: 13px;
+    width: fit-content;
+}
+
+    .promo:hover {
+        border-color: #7C22FD;
+    }
+
+.promo-title {
+    color: #7C22FD;
+    font-weight: 600;
+}
+
+.promo-sub {
+    color: #999;
+}
+
 @media (max-width: 600px) {
     .app:has(.detail-page) {
         max-width: none;
@@ -520,5 +550,9 @@ body {
 
     .stat-label {
         font-size: 12px;
+    }
+
+    .promo {
+        display: none;
     }
 }
