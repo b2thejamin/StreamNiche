@@ -2,7 +2,9 @@ body {
     margin: 0;
     background: #000000;
     color: #ffffff;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
@@ -51,9 +53,9 @@ body {
 .tagline {
     position: relative;
     z-index: 1;
-    color: #999;
-    font-size: 14px;
-    line-height: 1.5;
+    color: #bbb;
+    font-size: 15px;
+    line-height: 1.55;
     margin: 0 0 var(--spacing-md);
     max-width: 560px;
 }
