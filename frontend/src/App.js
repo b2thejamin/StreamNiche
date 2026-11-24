@@ -137,7 +137,7 @@ function App() {
                 className="promo"
             >
                 <span className="promo-title">Try clipsistent.com</span>
-                <span className="promo-sub">Daily AI clips from your streams, posted automatically</span>
+                <span className="promo-sub">Daily clips from your streams, posted automatically</span>
             </a>
 
             <div className="controls">
