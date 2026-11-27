@@ -483,6 +483,7 @@ body {
         padding: 0 10px;
         box-sizing: border-box;
         min-width: 0;
+        font-size: 15px;
     }
 
     .search.control-input {
@@ -515,6 +516,8 @@ body {
 
         .row .score {
             font-size: 20px;
+            font-family: system-ui;
+            font-weight: 700;
         }
 
         .row .meta {
@@ -541,6 +544,9 @@ body {
 
     .detail-score {
         font-size: 72px;
+        font-family: system-ui;
+        font-weight: 800;
+        line-height: 0.85;
         margin: var(--spacing-sm) 0 var(--spacing-md);
     }
 
