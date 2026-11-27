@@ -129,17 +129,16 @@ function App() {
                 StreamNiche scores games by viewership vs. competition. Higher scores mean better opportunities for new streamers. <span className="refresh-indicator">{getUpdatedLabel()}</span>
             </p>
 
-            <a
-                href="https://clipsistent.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="promo"
-            >
-                <span className="promo-title">Try clipsistent.com</span>
-                <span className="promo-sub">Daily clips from your streams, posted automatically</span>
-            </a>
-
             <div className="controls">
+                <a
+                    href="https://clipsistent.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="promo"
+                >
+                    Try clipsistent.com Daily clips, posted automatically.
+                </a>
+
                 <input
                     className="search control-input"
                     placeholder="Search games..."

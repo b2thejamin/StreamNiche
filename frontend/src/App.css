@@ -370,6 +370,7 @@ body {
 }
 
 .controls {
+    width: 100%;
     margin: 0 0 16px;
     display: flex;
     align-items: center;
@@ -414,34 +415,23 @@ body {
 }
 
 .promo {
-    position: relative;
-    z-index: 1;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    margin: 0 0 16px;
+    padding: 6px 14px;
     border: 1px solid #333;
     border-radius: 6px;
     background: rgba(124, 34, 253, 0.06);
-    color: #ccc;
+    color: #7C22FD;
     text-decoration: none;
     font-size: 13px;
-    width: fit-content;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
     .promo:hover {
         border-color: #7C22FD;
     }
-
-.promo-title {
-    color: #7C22FD;
-    font-weight: 600;
-}
-
-.promo-sub {
-    color: #999;
-}
 
 .detail-main {
     position: relative;
