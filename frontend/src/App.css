@@ -473,17 +473,25 @@ body {
 
     .controls {
         flex-wrap: nowrap;
+        gap: 6px;
+    }
+
+    .search.control-input,
+    .control-select,
+    .sort-btn {
+        height: 40px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        min-width: 0;
+    }
+
+    .search.control-input {
+        flex: 1.6 1 0 !important;
     }
 
     .control-select,
     .sort-btn {
         flex: 1 1 0 !important;
-        min-width: 0;
-    }
-
-    .search.control-input {
-        flex: 1.4 1 0 !important;
-        min-width: 0;
     }
 
     .list {
@@ -563,6 +571,11 @@ body {
     }
 
     .promo {
-        display: none;
+        width: 100%;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        padding: 8px 12px;
+        font-size: 12px;
+        margin-bottom: var(--spacing-sm);
     }
 }
