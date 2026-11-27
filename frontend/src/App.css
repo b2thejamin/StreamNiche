@@ -375,7 +375,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .pagination {
@@ -506,7 +506,7 @@ body {
     }
 
     .controls {
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         gap: 8px;
     }
 
@@ -633,6 +633,7 @@ body {
     }
 
     .promo {
+        order: -1;
         width: 100%;
         box-sizing: border-box;
         flex-wrap: wrap;
