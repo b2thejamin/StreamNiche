@@ -472,19 +472,18 @@ body {
     }
 
     .controls {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
 
-    .control-input,
     .control-select,
     .sort-btn {
-        flex: 1 1 calc(50% - var(--spacing-sm) / 2) !important;
+        flex: 1 1 0 !important;
         min-width: 0;
     }
 
     .search.control-input {
-        flex: 1 1 100% !important;
-        width: 100% !important;
+        flex: 1.4 1 0 !important;
+        min-width: 0;
     }
 
     .list {
