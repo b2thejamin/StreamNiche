@@ -130,15 +130,6 @@ function App() {
             </p>
 
             <div className="controls">
-                <a
-                    href="https://clipsistent.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="promo"
-                >
-                    Try clipsistent.com Daily clips, posted automatically.
-                </a>
-
                 <input
                     className="search control-input"
                     placeholder="Search games..."
@@ -168,6 +159,16 @@ function App() {
                     <option value="streamers">Streamers</option>
                     <option value="viewers">Viewers</option>
                 </select>
+
+                <a
+                    href="https://clipsistent.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="promo"
+                >
+                    <span className="promo-title">Try clipsistent.com</span>{" "}
+                    <span className="promo-sub">Daily clips, posted automatically.</span>
+                </a>
             </div>
 
             <div className="list">
