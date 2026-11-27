@@ -84,24 +84,23 @@ export default function Detail({ game, onBack }) {
                         y: trendData.map((d) => d.score),
                         type: "scatter",
                         mode: "lines+markers",
-                        line: { color: "#7C22FD", width: 2 },
-                        marker: { color: "#7C22FD", size: 6 },
+                        line: { color: "#7C22FD", width: 3 },
+                        marker: { color: "#7C22FD", size: 9, line: { color: "#000000", width: 1 } },
                         hoverinfo: "skip",
                     },
                 ]}
                 layout={{
                     autosize: true,
-                    height: 220,
-                    margin: { l: 36, r: 16, t: 10, b: 36 },
-                    paper_bgcolor: "#1a1a1a",
-                    plot_bgcolor: "#1a1a1a",
-                    font: { color: "#ffffff", size: 12 },
+                    margin: { l: 48, r: 20, t: 16, b: 44 },
+                    paper_bgcolor: "rgba(0,0,0,0)",
+                    plot_bgcolor: "rgba(0,0,0,0)",
+                    font: { color: "#ffffff", size: 14 },
                     dragmode: false,
                     hovermode: false,
                     xaxis: {
                         gridcolor: "#333",
                         zerolinecolor: "#333",
-                        tickfont: { color: "#999" },
+                        tickfont: { color: "#ccc", size: 13 },
                         tickformat: "%b %-d",
                         type: "date",
                         fixedrange: true,
@@ -109,9 +108,10 @@ export default function Detail({ game, onBack }) {
                     yaxis: {
                         gridcolor: "#333",
                         zerolinecolor: "#333",
-                        tickfont: { color: "#999" },
+                        tickfont: { color: "#ccc", size: 13 },
                         range: [0, 100],
                         fixedrange: true,
+                        nticks: 6,
                     },
                 }}
                 config={{
