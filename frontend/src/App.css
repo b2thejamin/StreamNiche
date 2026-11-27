@@ -366,7 +366,6 @@ body {
 }
 
 .controls {
-    max-width: 560px;
     margin: 0 0 var(--spacing-md);
     display: flex;
     align-items: center;
@@ -424,9 +423,7 @@ body {
     color: #ccc;
     text-decoration: none;
     font-size: 13px;
-    width: 100%;
-    max-width: 560px;
-    box-sizing: border-box;
+    width: fit-content;
 }
 
     .promo:hover {
