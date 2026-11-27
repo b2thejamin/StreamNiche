@@ -135,7 +135,7 @@ function App() {
                     placeholder="Search games..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    style={{ padding: "6px 12px", borderRadius: "6px", background: "#1e1e1e", color: "#ffffff", width: "220px", flex: "0 0 auto" }}
+                    style={{ padding: "6px 12px", borderRadius: "6px", background: "#1e1e1e", color: "#ffffff", width: "190px", flex: "0 0 auto" }}
                 />
 
                 <select
@@ -161,13 +161,12 @@ function App() {
                 </select>
 
                 <a
-                    href="https://clipsistent.com/"
+                    href="https://clipsistant.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="promo"
                 >
-                    <span className="promo-title">Try clipsistent.com</span>{" "}
-                    <span className="promo-sub">Daily clips, posted automatically.</span>
+                    <span className="promo-title">Try clipsistent.com</span> <span className="promo-sub">Daily clips, posted automatically.</span>
                 </a>
             </div>
 
