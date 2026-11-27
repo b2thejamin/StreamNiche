@@ -161,7 +161,7 @@ function App() {
                 </select>
 
                 <a
-                    href="https://clipsitent.com/"
+                    href="https://clipsistent.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="promo"
