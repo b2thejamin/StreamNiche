@@ -453,9 +453,9 @@ body {
 }
 
 .detail-box-art {
-    height: 96px;
-    width: 72px;
-    border-radius: 6px;
+    height: 160px;
+    width: 120px;
+    border-radius: 8px;
     object-fit: cover;
     background: #1a1a1a;
 }
@@ -576,8 +576,8 @@ body {
     }
 
     .detail-box-art {
-        height: 104px;
-        width: 78px;
+        height: 96px;
+        width: 72px;
         border-radius: 6px;
     }
 
