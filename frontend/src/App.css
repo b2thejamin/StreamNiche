@@ -443,6 +443,33 @@ body {
     color: #999;
 }
 
+.detail-main {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 8px;
+}
+
+.detail-box-art {
+    height: 160px;
+    width: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #1a1a1a;
+}
+
+.detail-box-art-placeholder {
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+}
+
+.detail-main-info {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (max-width: 600px) {
     .app:has(.detail-page) {
         max-width: none;
@@ -541,6 +568,17 @@ body {
 
     .detail-header {
         gap: var(--spacing-sm);
+    }
+
+    .detail-main {
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .detail-box-art {
+        height: 96px;
+        width: 72px;
+        border-radius: 6px;
     }
 
     .back {

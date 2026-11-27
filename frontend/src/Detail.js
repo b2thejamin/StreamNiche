@@ -146,18 +146,27 @@ export default function Detail({ game, onBack }) {
                     <h1 className="detail-title">{game.name}</h1>
                 </a>
             </div>
-            <div className="detail-score" style={{ color: scoreColor(game.score) }}>
-                {game.score}
-            </div>
-            <div className="detail-stats">
-                <div>
-                    <div className="stat-num">{game.total_viewers?.toLocaleString() || "—"}</div>
-                    <div className="stat-label">Viewers</div>
-                </div>
-                <div>
-                    <div className="stat-num">{game.streamer_count?.toLocaleString() || "—"}</div>
-                    <div className="stat-label">
-                        Streamers
+            <div className="detail-main">
+                {game.box_art_url ? (
+                    <img src={game.box_art_url} alt={`${game.name} box art`} className="detail-box-art" />
+                ) : (
+                    <div className="detail-box-art detail-box-art-placeholder" aria-hidden="true" />
+                )}
+                <div className="detail-main-info">
+                    <div className="detail-score" style={{ color: scoreColor(game.score) }}>
+                        {game.score}
+                    </div>
+                    <div className="detail-stats">
+                        <div>
+                            <div className="stat-num">{game.total_viewers?.toLocaleString() || "—"}</div>
+                            <div className="stat-label">Viewers</div>
+                        </div>
+                        <div>
+                            <div className="stat-num">{game.streamer_count?.toLocaleString() || "—"}</div>
+                            <div className="stat-label">
+                                Streamers
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
