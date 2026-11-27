@@ -11,7 +11,6 @@ function App() {
     const [search, setSearch] = useState("");
     const [genre, setGenre] = useState("All");
     const [sortBy, setSortBy] = useState("score");
-    const [sortDir, setSortDir] = useState("desc");
     const [selected, setSelected] = useState(null);
     const [lastUpdated, setLastUpdated] = useState(null);
     const [now, setNow] = useState(Date.now());
@@ -43,7 +42,7 @@ function App() {
 
     useEffect(() => {
         setPage(1);
-    }, [search, genre, sortBy, sortDir]);
+    }, [search, genre, sortBy]);
 
     const getUpdatedLabel = () => {
         if (!lastUpdated) return "Updating...";
@@ -87,9 +86,9 @@ function App() {
                 aVal = a.score || 0;
                 bVal = b.score || 0;
             }
-            return sortDir === "desc" ? bVal - aVal : aVal - bVal;
+            return bVal - aVal;
         });
-    }, [games, search, genre, sortBy, sortDir]);
+    }, [games, search, genre, sortBy]);
 
     const totalPages = Math.max(1, Math.ceil(sortedFiltered.length / PAGE_SIZE));
     const currentPage = Math.min(page, totalPages);
@@ -170,22 +169,6 @@ function App() {
                     <option value="streamers">Streamers</option>
                     <option value="viewers">Viewers</option>
                 </select>
-
-                <button
-                    className="sort-btn"
-                    onClick={() => setSortDir(sortDir === "desc" ? "asc" : "desc")}
-                    style={{
-                        padding: "6px 12px",
-                        borderRadius: "6px",
-                        background: "#2a2a2a",
-                        color: "#ffffff",
-                        cursor: "pointer",
-                        flexShrink: 0,
-                        whiteSpace: "nowrap"
-                    }}
-                >
-                    {sortDir === "desc" ? "High → Low" : "Low → High"}
-                </button>
             </div>
 
             <div className="list">
