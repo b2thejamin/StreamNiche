@@ -453,12 +453,10 @@ body {
 }
 
 .detail-box-art {
-    height: 168px;
-    width: 126px;
-    border-radius: 8px;
+    height: 96px;
+    width: 72px;
+    border-radius: 6px;
     object-fit: cover;
-    align-self: flex-start;
-    flex-shrink: 0;
     background: #1a1a1a;
 }
 
