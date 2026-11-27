@@ -447,17 +447,16 @@ body {
     position: relative;
     z-index: 1;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     gap: 24px;
     margin-bottom: 8px;
 }
 
 .detail-box-art {
-    height: 160px;
-    width: 120px;
-    border-radius: 8px;
-    object-fit: cover;
-    background: #1a1a1a;
+    align-self: stretch;
+    width: auto;
+    aspect-ratio: 3 / 4;
+    border-radius: 6px;
 }
 
 .detail-box-art-placeholder {
