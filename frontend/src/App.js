@@ -166,7 +166,8 @@ function App() {
                     rel="noopener noreferrer"
                     className="promo"
                 >
-                    <span className="promo-title">Try clipsistent.com</span> <span className="promo-sub">Daily clips, posted automatically.</span>
+                    <span className="promo-title">Try clipsistent.com</span>
+                    <span className="promo-sub">Daily clips, posted automatically.</span>
                 </a>
             </div>
 
