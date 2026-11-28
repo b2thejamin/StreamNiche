@@ -380,6 +380,13 @@ body {
     flex-wrap: nowrap;
 }
 
+.controls .search,
+.controls .control-select,
+.controls .promo {
+    height: 40px;
+    box-sizing: border-box;
+}
+
 .pagination {
     position: relative;
     z-index: 1;
@@ -648,10 +655,4 @@ body {
         font-size: 12px;
         margin-bottom: var(--spacing-sm);
     }
-
-.controls .search,
-.controls .control-select,
-.controls .promo {
-    height: 40px;
-    box-sizing: border-box;
 }
