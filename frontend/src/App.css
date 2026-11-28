@@ -255,7 +255,7 @@ body {
     position: relative;
     z-index: 1;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-xs);
 }
@@ -574,6 +574,7 @@ body {
 
     .detail-header {
         gap: var(--spacing-sm);
+        align-items: center;
     }
 
     .detail-main {
