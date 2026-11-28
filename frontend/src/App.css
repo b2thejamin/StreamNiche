@@ -244,7 +244,7 @@ body {
     z-index: 1;
     color: #7C22FD;
     font-size: 28px;
-    margin: 0 0 var(--spacing-xs);
+    margin: 0 0 var(--spacing-md);
     white-space: nowrap;
     height: 40px;
     width: auto;
@@ -501,6 +501,10 @@ body {
     .logo,
     .detail-logo {
         height: 32px;
+    }
+
+    .detail-logo {
+        margin-bottom: var(--spacing-md);
     }
 
     .tagline {
