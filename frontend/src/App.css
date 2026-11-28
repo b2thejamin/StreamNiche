@@ -255,8 +255,8 @@ body {
     position: relative;
     z-index: 1;
     display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
+    align-items: flex-start;
+    gap: var(--spacing-sm);
     margin-bottom: var(--spacing-xs);
 }
 
@@ -286,8 +286,10 @@ body {
     }
 
 .detail-title {
-    font-size: 52px;
+    font-size: 40px;
     font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
     margin: 0;
 }
 
@@ -344,14 +346,14 @@ body {
     background: rgba(30, 30, 30, 0.45);
     border: none;
     border-radius: 8px;
-    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-xs);
 }
 
 .trend-label {
     font-size: 16px;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .trend-chart {
@@ -618,7 +620,7 @@ body {
     }
 
     .trend {
-        padding: var(--spacing-md) var(--spacing-sm) var(--spacing-xs);
+        padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-xs);
     }
 
     .trend-label {
