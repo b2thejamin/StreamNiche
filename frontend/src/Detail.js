@@ -91,7 +91,7 @@ export default function Detail({ game, onBack }) {
                 ]}
                 layout={{
                     autosize: true,
-                    margin: { l: 48, r: 20, t: 16, b: 44 },
+                    margin: { l: 36, r: 12, t: 16, b: 44 },
                     paper_bgcolor: "rgba(0,0,0,0)",
                     plot_bgcolor: "rgba(0,0,0,0)",
                     font: { color: "#ffffff", size: 14 },
