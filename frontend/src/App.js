@@ -135,7 +135,7 @@ function App() {
                     placeholder="Search games..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    style={{ padding: "6px 12px", borderRadius: "6px", background: "#1e1e1e", color: "#ffffff", width: "190px", flex: "0 0 auto" }}
+                    style={{ padding: "6px 12px", borderRadius: "6px", background: "#1e1e1e", color: "#ffffff", flex: "1 1 160px", minWidth: "140px" }}
                 />
 
                 <select
